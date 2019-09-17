@@ -9,6 +9,7 @@
         <module name="nacos-config-client" />
         <module name="user-service-api" />
         <module name="user-service-server" />
+        <module name="elasticsearch-data-import" />
         <module name="web-test-server" />
       </profile>
     </annotationProcessing>
@@ -18,6 +19,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="elasticsearch-data-import" options="" />
       <module name="nacos-config-client" options="" />
     </option>
   </component>

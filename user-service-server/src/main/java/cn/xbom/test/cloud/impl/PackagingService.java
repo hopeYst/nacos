@@ -8,7 +8,11 @@ import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/packaging")
@@ -17,13 +21,15 @@ public class PackagingService implements cn.xbom.test.cloud.api.module.Packaging
     @Autowired
     private PackagingDAO packagingDAO;
 
+    private static final BeanCopier BEAN_COPIER = BeanCopier.create(PackagingDO.class, PackagingDTO.class, false);
+
     @Override
     public PackagingDTO findPackagingById(Long id) {
-        BeanCopier beanCopier = BeanCopier.create(PackagingDO.class, PackagingDTO.class, false);
+
 
         PackagingDO packagingInDB = packagingDAO.findPackagingById(id);
         PackagingDTO packagingDTO = new PackagingDTO();
-        beanCopier.copy(packagingInDB,packagingDTO,null);
+        BEAN_COPIER.copy(packagingInDB,packagingDTO,null);
 
         return packagingDTO;
     }
@@ -33,7 +39,12 @@ public class PackagingService implements cn.xbom.test.cloud.api.module.Packaging
     @Override
     public List<PackagingDTO> findAll() {
         List<PackagingDO> packagingDAOS = packagingDAO.listAll();
-        System.out.println(packagingDAOS);
-        return null;
+        ArrayList<PackagingDTO> dtos = new ArrayList<>();
+        packagingDAOS.stream().forEach(d -> {
+            PackagingDTO dto = new PackagingDTO();
+            BEAN_COPIER.copy(d,dto,null);
+            dtos.add(dto);
+        });
+        return dtos;
     }
 }

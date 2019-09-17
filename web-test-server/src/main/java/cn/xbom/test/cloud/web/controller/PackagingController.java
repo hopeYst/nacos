@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 public class PackagingController {
 
-    @Autowired(required = false)
+    @Autowired
     private PackagingService packagingService;
 
     @GetMapping("/package/findById")

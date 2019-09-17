@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/user-service-server/pom.xml" />
         <option value="$PROJECT_DIR$/web-test-server/pom.xml" />
         <option value="$PROJECT_DIR$/user-config-client/pom.xml" />
+        <option value="$PROJECT_DIR$/elasticsearch-data-import/pom.xml" />
       </list>
     </option>
   </component>

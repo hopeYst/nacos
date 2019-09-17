@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient("User-service")
+@FeignClient("User-Service")
 public interface PackagingService {
 
     @GetMapping("/packaging/find")

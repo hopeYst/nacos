@@ -12,6 +12,7 @@
         <module>user-service-api</module>
         <module>user-service-server</module>
         <module>web-test-server</module>
+        <module>elasticsearch-data-import</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -47,12 +48,6 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-hystrix</artifactId>
                 <version>1.3.5.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.2</version>
-                <optional>true</optional>
             </dependency>
         </dependencies>
     </dependencyManagement>
