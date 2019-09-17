@@ -4,12 +4,10 @@ import cn.xbom.test.cloud.api.IUserService;
 import cn.xbom.test.cloud.web.configruation.FeignConfigruation;
 import cn.xbom.test.cloud.web.exception.ServiceFallBack;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -18,7 +16,7 @@ import java.util.UUID;
 @Slf4j
 public class UserCenterController {
 
-    @Autowired
+    @Autowired(required = false)
     protected UserService userService;
 
     @GetMapping("/web/user")

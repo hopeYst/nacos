@@ -13,14 +13,13 @@ public class ServiceFallBack implements FallbackFactory<UserCenterController.Use
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceFallBack.class);
     private static final String ERRORMSG = "this interface is temporarily unavailable";
 
+    @Override
     public UserCenterController.UserService create(Throwable throwable) {
-
         final String msg = throwable == null ? "" : throwable.getMessage();
 
         if (null != msg){
             LOGGER.error(msg);
         }
-
         return new UserCenterController.UserService(){
             public String getUser(Integer userId) {
                 LOGGER.info(msg);
@@ -33,6 +32,6 @@ public class ServiceFallBack implements FallbackFactory<UserCenterController.Use
                 return ERRORMSG;
             }
         };
-
     }
+
 }

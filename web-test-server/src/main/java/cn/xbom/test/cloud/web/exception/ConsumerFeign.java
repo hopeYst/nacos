@@ -1,6 +1,5 @@
 package cn.xbom.test.cloud.web.exception;
 
-import cn.xbom.test.cloud.api.IUserService;
 import cn.xbom.test.cloud.web.controller.UserCenterController;
 import org.springframework.stereotype.Component;
 
