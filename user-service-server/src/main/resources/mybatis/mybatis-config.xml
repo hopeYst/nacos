@@ -11,5 +11,6 @@
     <!--</settings>-->
     <mappers>
         <mapper resource="mybatis/sqlmap/PackagingDAO.xml"/>
+        <mapper resource="mybatis/sqlmap/ManufacturerDAO.xml"/>
     </mappers>
 </configuration>

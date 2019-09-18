@@ -7,14 +7,14 @@ import org.springframework.data.elasticsearch.annotations.Field;
 
 @Data
 @Document(
-        indexName = "xbom-package",
-        type = "packaging"
+        indexName = "xbom-manufacturer",
+        type = "manufacturer"
 )
-public class XbomPackaging {
+public class XbomManufacturer {
 
     @Id
     private Long id;
-    @Field()
+    @Field
     private String name;
-
+    private String url;
 }

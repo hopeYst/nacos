@@ -1,13 +1,11 @@
-package cn.xbom.dataimport;
+package cn.xbom.dataimport.contorller;
 
-import cn.xbom.dataimport.dao.ElasticSearchPackagingDAO;
+import cn.xbom.dataimport.dao.OperationPackagingDAO;
 import cn.xbom.dataimport.entity.XbomPackaging;
 import cn.xbom.test.cloud.api.dto.PackagingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +17,7 @@ public class PackagingContorller {
     private PackageService packageService;
 
     @Autowired
-    private ElasticSearchPackagingDAO elasticSearchPackagingDAO;
+    private OperationPackagingDAO elasticSearchPackagingDAO;
 
     @GetMapping("/feign/hello")
     public List hello(){
@@ -32,6 +30,15 @@ public class PackagingContorller {
             Optional<XbomPackaging> byId = elasticSearchPackagingDAO.findById(id);
         XbomPackaging xbomPackaging = byId.get();
         return xbomPackaging.toString();
+    }
+
+    @PostMapping("/packaging/save")
+    public String savePackaging(@RequestParam("id") Long id, @RequestParam("name") String name){
+        XbomPackaging packaging = new XbomPackaging();
+        packaging.setId(id);
+        packaging.setName(name);
+        XbomPackaging index = elasticSearchPackagingDAO.index(packaging);
+        return index.toString();
     }
 
     @FeignClient(name = "User-Service", path = "/packaging")

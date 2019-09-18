@@ -5,5 +5,5 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 import org.springframework.stereotype.Component;
 
 @Component
-public interface ElasticSearchPackagingDAO extends ElasticsearchRepository<XbomPackaging,String> {
+public interface OperationPackagingDAO extends ElasticsearchRepository<XbomPackaging,String> {
 }
